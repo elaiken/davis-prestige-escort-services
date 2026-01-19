@@ -64,6 +64,24 @@ export function CoverageMap() {
           <p>Location detection will begin automatically.</p>
         )}
       </div>
+
+      <form className="mt-4 flex flex-col gap-3 text-xs uppercase tracking-[0.25em] text-slate sm:flex-row">
+        <label className="flex-1">
+          <span className="sr-only">City or ZIP</span>
+          <input
+            type="text"
+            name="coverage"
+            placeholder="Check city or ZIP"
+            className="w-full rounded-full border border-white/10 bg-ink px-4 py-3 text-xs uppercase tracking-[0.25em] text-slate"
+          />
+        </label>
+        <button
+          type="button"
+          className="rounded-full border border-gold/70 px-5 py-3 text-xs uppercase tracking-[0.25em] text-gold"
+        >
+          Check
+        </button>
+      </form>
     </div>
   );
 }
