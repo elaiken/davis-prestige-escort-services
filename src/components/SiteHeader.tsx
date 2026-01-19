@@ -4,6 +4,7 @@ const navItems = [
   { label: "Escort Services", href: "/services/funeral-escort" },
   { label: "Security Services", href: "/services/security" },
   { label: "Hearse & Limo", href: "/services/vehicle-rentals" },
+  { label: "Leadership", href: "/team" },
   { label: "Request", href: "/request" },
 ];
 
