@@ -1,26 +1,43 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-ink: #0b0c10;
+  --color-charcoal: #111419;
+  --color-navy: #0d1624;
+  --color-slate: #e2e6ec;
+  --color-mist: #9aa3ad;
+  --color-gold: #b9a46a;
+  --color-gold-dim: #8f7f52;
+  --font-body: var(--font-manrope);
+  --font-heading: var(--font-cormorant);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(
+      circle at top,
+      rgba(17, 20, 25, 0.9) 0%,
+      rgba(11, 12, 16, 0.95) 45%,
+      rgba(11, 12, 16, 1) 100%
+    )
+    fixed;
+  color: var(--color-slate);
+  font-family: var(--font-body);
+  letter-spacing: 0.01em;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
 }
