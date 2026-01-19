@@ -1,4 +1,4 @@
-import { supabaseServer } from "@/lib/supabase/server";
+import { getSupabaseServer } from "@/lib/supabase/server";
 
 function normalizeValue(value: FormDataEntryValue) {
   if (typeof value === "string") {
@@ -34,6 +34,15 @@ export async function POST(request: Request) {
     return Response.json(
       { ok: false, error: "Missing required fields." },
       { status: 400 }
+    );
+  }
+
+  const supabaseServer = getSupabaseServer();
+
+  if (!supabaseServer) {
+    return Response.json(
+      { ok: false, error: "Supabase is not configured." },
+      { status: 500 }
     );
   }
 
