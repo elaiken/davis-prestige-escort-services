@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CoverageMap } from "@/components/CoverageMap";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { StickyCTA } from "@/components/StickyCTA";
@@ -255,16 +256,7 @@ export default function Home() {
                 We auto-detect location to confirm availability and optimize the
                 route in real time.
               </p>
-              <div className="rounded-3xl border border-white/10 bg-charcoal/80 p-6 text-sm text-mist">
-                <p className="text-xs uppercase tracking-[0.3em] text-slate">
-                  Coverage Map
-                </p>
-                <div className="mt-4 h-52 rounded-2xl border border-white/10 bg-navy/70"></div>
-                <p className="mt-4">
-                  Primary service corridors include metro, suburban, and
-                  regional routes.
-                </p>
-              </div>
+              <CoverageMap />
             </div>
             <div className="rounded-3xl border border-white/10 bg-charcoal/80 p-6 text-sm text-mist">
               <p className="text-xs uppercase tracking-[0.3em] text-slate">
