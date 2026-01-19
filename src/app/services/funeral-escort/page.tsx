@@ -4,10 +4,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { StickyCTA } from "@/components/StickyCTA";
 
 const deliverables = [
-  "Route planning with traffic coordination.",
-  "Escort commanders and professional drivers.",
+  "Route planning with local traffic coordination.",
+  "Escort commanders and certified drivers.",
   "Real-time communication with funeral directors.",
-  "Discrete traffic control for a respectful flow.",
+  "Discreet traffic control for a respectful flow.",
 ];
 
 export default function FuneralEscortPage() {
@@ -23,8 +23,8 @@ export default function FuneralEscortPage() {
             Dignified Procession Support
           </h1>
           <p className="text-lg text-mist">
-            We ensure safe, calm, and coordinated funeral processions with
-            expert traffic management and respectful presence.
+            We provide calm, coordinated processions with expert traffic
+            management and a respectful, low-profile presence.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link

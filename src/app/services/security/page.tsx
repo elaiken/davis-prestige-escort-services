@@ -23,8 +23,8 @@ export default function SecurityPage() {
             Calm, Professional Presence
           </h1>
           <p className="text-lg text-mist">
-            We provide respectful security coverage for services, venues, and
-            private family gatherings with minimal disruption.
+            Respectful security coverage for services, venues, and private
+            family gatherings with minimal disruption.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
             <Link

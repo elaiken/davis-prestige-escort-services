@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -33,7 +34,7 @@ const services = [
 const trustSignals = [
   "Licensed, bonded, and insured operations",
   "Discretion and privacy guarantees",
-  "Established professional affiliations",
+  "Professional affiliations and vetted staff",
   "Dedicated escort commanders on every route",
   "Coverage across metro and regional corridors",
 ];
@@ -42,14 +43,20 @@ const fleetHighlights = [
   {
     title: "Executive Hearse",
     detail: "Full-length capacity, cathedral finish interior, discreet lighting.",
+    image: "/fleet-hearse.svg",
+    alt: "Executive hearse profile illustration",
   },
   {
     title: "Prestige Limo",
     detail: "Seating for family transport, private entry, climate control.",
+    image: "/fleet-limo.svg",
+    alt: "Prestige limo profile illustration",
   },
   {
     title: "Procession Support SUV",
     detail: "Escort command, safety equipment, and communications suite.",
+    image: "/fleet-suv.svg",
+    alt: "Procession support SUV profile illustration",
   },
 ];
 
@@ -67,8 +74,8 @@ export default function Home() {
               Davis Prestige Escort Services
             </h1>
             <p className="text-lg text-mist">
-              We ensure safe, dignified procession support during life&apos;s
-              most serious moments. Professional presence without disruption.
+              Safe, dignified procession support during life&apos;s most serious
+              moments, delivered with quiet authority and respect.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link
@@ -147,8 +154,8 @@ export default function Home() {
               </h2>
               <p className="text-mist">
                 Built for 2027+ expectations with structured intake, AI-assisted
-                summaries, and automated routing. Tell us what you need and we
-                will translate it into a precise operations plan.
+                summaries, and automated routing. Speak naturally and we
+                translate it into a precise operations plan.
               </p>
               <div className="grid gap-4 text-sm text-mist sm:grid-cols-2">
                 <div className="rounded-2xl border border-white/10 bg-charcoal/70 p-4">
@@ -205,8 +212,8 @@ export default function Home() {
                 Fleet Showcase
               </h2>
               <p className="text-mist">
-                Tasteful presentation with interior and exterior documentation.
-                Capacity details and use cases are provided with every vehicle.
+                Luxury catalog presentation with interior and exterior details.
+                Capacity notes and use cases are provided with every vehicle.
               </p>
             </div>
             <Link
@@ -222,7 +229,13 @@ export default function Home() {
                 key={vehicle.title}
                 className="rounded-3xl border border-white/10 bg-charcoal/80 p-6"
               >
-                <div className="h-40 rounded-2xl border border-white/10 bg-navy/70"></div>
+                <Image
+                  src={vehicle.image}
+                  alt={vehicle.alt}
+                  width={720}
+                  height={480}
+                  className="h-40 w-full rounded-2xl border border-white/10 object-cover"
+                />
                 <p className="mt-5 text-sm uppercase tracking-[0.2em] text-slate">
                   {vehicle.title}
                 </p>
@@ -279,7 +292,7 @@ export default function Home() {
               </h2>
               <p className="text-mist">
                 Designed for screen readers, high-contrast viewing, and large
-                text options. Simple-language alternatives are available upon
+                text options. Simple-language alternatives are available on
                 request.
               </p>
               <div className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.2em]">

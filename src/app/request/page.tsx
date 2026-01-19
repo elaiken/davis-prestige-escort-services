@@ -1,9 +1,55 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { StickyCTA } from "@/components/StickyCTA";
 
 export default function RequestPage() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle"
+  );
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("loading");
+    setMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/requests", {
+        method: "POST",
+        body: formData,
+      });
+      const data = (await response.json()) as {
+        ok?: boolean;
+        error?: string;
+        message?: string;
+      };
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Unable to submit request.");
+      }
+
+      setStatus("success");
+      setMessage(
+        data?.message || "Request received. A coordinator will reach out soon."
+      );
+      form.reset();
+    } catch (error) {
+      setStatus("error");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit request."
+      );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-ink text-slate">
       <SiteHeader />
@@ -22,8 +68,7 @@ export default function RequestPage() {
         </section>
 
         <form
-          action="/api/requests"
-          method="post"
+          onSubmit={handleSubmit}
           className="space-y-6 rounded-3xl border border-white/10 bg-charcoal/80 p-6"
         >
           <div className="grid gap-6 md:grid-cols-2">
@@ -114,18 +159,31 @@ export default function RequestPage() {
           <div className="flex flex-col gap-4 sm:flex-row">
             <button
               type="submit"
-              className="rounded-full border border-gold/70 px-6 py-3 text-xs uppercase tracking-[0.3em] text-gold"
+              disabled={status === "loading"}
+              className="rounded-full border border-gold/70 px-6 py-3 text-xs uppercase tracking-[0.3em] text-gold disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Submit Request
+              {status === "loading" ? "Submitting..." : "Submit Request"}
             </button>
-            <Link
+            <a
               href="tel:+18005551234"
               className="rounded-full border border-white/20 px-6 py-3 text-center text-xs uppercase tracking-[0.3em] text-slate"
             >
               Call Hotline
-            </Link>
+            </a>
           </div>
         </form>
+
+        {status !== "idle" ? (
+          <div
+            className="mt-6 rounded-2xl border border-white/10 bg-charcoal/80 p-4 text-sm text-mist"
+            aria-live="polite"
+          >
+            <p className="text-slate">
+              {status === "success" ? "Request received" : "Request status"}
+            </p>
+            <p className="mt-2">{message}</p>
+          </div>
+        ) : null}
 
         <p className="mt-6 text-sm text-mist">
           Prefer a direct conversation? Call{" "}

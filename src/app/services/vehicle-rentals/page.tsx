@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -7,14 +8,20 @@ const fleet = [
   {
     title: "Executive Hearse",
     detail: "Cathedral finish, discreet lighting, full-length capacity.",
+    image: "/fleet-hearse.svg",
+    alt: "Executive hearse profile illustration",
   },
   {
     title: "Prestige Limo",
     detail: "Family transport seating, privacy glass, calm interior lighting.",
+    image: "/fleet-limo.svg",
+    alt: "Prestige limo profile illustration",
   },
   {
     title: "Procession Support SUV",
     detail: "Escort command, radio suite, and safety equipment.",
+    image: "/fleet-suv.svg",
+    alt: "Procession support SUV profile illustration",
   },
 ];
 
@@ -64,7 +71,13 @@ export default function VehicleRentalsPage() {
                 key={vehicle.title}
                 className="rounded-3xl border border-white/10 bg-charcoal/80 p-6"
               >
-                <div className="h-40 rounded-2xl border border-white/10 bg-navy/70"></div>
+                <Image
+                  src={vehicle.image}
+                  alt={vehicle.alt}
+                  width={720}
+                  height={480}
+                  className="h-40 w-full rounded-2xl border border-white/10 object-cover"
+                />
                 <p className="mt-5 text-sm uppercase tracking-[0.2em] text-slate">
                   {vehicle.title}
                 </p>
